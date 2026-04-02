@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    environment{
+        DOCKER_IMAGE ="idasharon/htmldemo"
+        
+    }
+
+    stages {
+        stage('git clone') {
+            steps {
+                branch'main', url:'https://github.com/Ida-code/MidAgile.git'
+            }
+          stage('docker build') {
+            steps {
+                bat docker build -t '/Docker_IMAGE .'
+            }
+        }
+    }
+
